@@ -7,7 +7,6 @@ export type ProductDocument = HydratedDocument<Product>;
 export class Product {
   @Prop({ required: true })
   product_name: string;
-
   @Prop({ required: true, min: 0 })
   product_price: number;
 }
