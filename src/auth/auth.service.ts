@@ -8,9 +8,9 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { JwtService } from '@nestjs/jwt';
-import { User, UserDocument } from '../product/schema/user.schema.js';
 import { loginUserDto, regisetrUserDTO } from './dto/auth.dto.js';
 import { hash_Password } from '../common/utils/password.utils.js';
+import { User, UserDocument } from '../schema/user.schema.js';
 
 @Injectable()
 export class AuthService {
@@ -38,6 +38,7 @@ export class AuthService {
       const payload = {
         sub: user._id.toString(),
         email: user.email,
+        role: 'user',
       };
 
       // 4. Generate access token
@@ -84,6 +85,7 @@ export class AuthService {
       const access_token = await this.jwtService.signAsync({
         sub: user?._id.toString(),
         email: user.email,
+        role: 'user',
       });
       return {
         success: true,

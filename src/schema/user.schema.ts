@@ -19,6 +19,10 @@ export class User {
   age: number;
   @Prop({ type: String, required: false })
   access_token: string;
+  @Prop({ type: Boolean, default: true })
+  isActive: boolean;
+  @Prop({ type: Boolean, default: false })
+  isDelete: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
