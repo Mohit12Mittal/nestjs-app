@@ -19,10 +19,10 @@ jobs:
           cache: npm
 
       - name: Install Dependency
-        uses: npm ci
+        run: npm ci
 
       - name: Create Build
-        uses: npm run build
+        run: npm run build
 
       - name: Deploy To Render
         run: curl --fail --silent --show-error "{{secrets.RENDER_DEPLOY_HOOK_URL}}"
