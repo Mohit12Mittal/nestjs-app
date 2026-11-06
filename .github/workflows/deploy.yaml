@@ -25,4 +25,4 @@ jobs:
         run: npm run build
 
       - name: Deploy To Render
-        run: curl --fail --silent --show-error "{{secrets.RENDER_DEPLOY_HOOK_URL}}"
+        run: curl --fail --silent --show-error "${{secrets.RENDER_DEPLOY_HOOK_URL}}"
