@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module.js';
 import { UserModule } from './user/user.module.js';
 import { loggerMiddleware } from './middleware/logger.middleware.js';
 import { AdminModule } from './admin/admin.module.js';
+import { HealthcheckController } from './healthcheck/healthcheck.controller.js';
 
 @Module({
   imports: [
@@ -34,7 +35,7 @@ import { AdminModule } from './admin/admin.module.js';
     UserModule,
     AdminModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, HealthcheckController],
   providers: [AppService],
 })
 export class AppModule implements NestModule {
