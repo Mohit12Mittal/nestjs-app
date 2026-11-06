@@ -1,0 +1,31 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: my-mongodb
+    volumes:
+      - mongodb-storage:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - nest-app-network
+    restart: unless-stopped
+
+  nest-app:
+    image: mohitmittal321/nest-app
+    container_name: my-nest-app
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    networks:
+      - nest-app-network
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+
+networks:
+  nest-app-network:
+    driver: bridge
+
+volumes:
+  mongodb-storage:
